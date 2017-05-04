@@ -47,8 +47,16 @@ public class Register extends HttpServlet {
 			
 			PreparedStatement ps = con.prepareStatement("insert into registeruser values(?,?)");
 			
+			ps.setString(1,name);
+			ps.setString(2,pass);
+			
+			int i = ps.executeUpdate();
+			if (i > 0)
+				out.print("You are registered");
 			
 		} catch (Exception e){ System.out.println(e);}
+		
+		out.close();
 	}
 
 }
